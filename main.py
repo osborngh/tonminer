@@ -11,7 +11,10 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.proxy import *
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
+
+from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.utils import ChromeType
+
 import time
 import yaml
 import os
@@ -57,13 +60,14 @@ def login(wallet_addr):
     proxy = change_proxy()
 
     chrome_options = Options()
-    # chrome_options.add_argument('--headless=new')
+    chrome_options.add_argument('--headless=new')
     chrome_options.add_argument(f'--proxy-server={proxy}')
 
     print(f"Using Proxy: {proxy}...")
-
-    service = Service()
-    driver = webdriver.Chrome(service=service, options=chrome_options)
+    
+    driver_path = ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()
+    driver = webdriver.Chrome(driver_path, options=chrome_options)
+    
     try:
         driver.get(URL)
     except:
