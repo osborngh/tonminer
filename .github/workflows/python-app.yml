@@ -17,8 +17,7 @@ jobs:
           python-version: '3.10' # install the python version needed
 
       - name: setup chrome
-      - uses: browser-actions/setup-chrome@v1
-      - run: chrome --version
+        uses: browser-actions/setup-chrome@v1
 
       - name: install python packages
         run: |
