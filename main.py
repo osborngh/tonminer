@@ -59,13 +59,13 @@ def change_proxy():
     return random.choice(proxies)
 
 def login(wallet_addr):
-    proxy = change_proxy()
+    # proxy = change_proxy()
 
     chrome_options = Options()
     chrome_options.add_argument('--headless=new')
-    chrome_options.add_argument(f'--proxy-server={proxy}')
+    # chrome_options.add_argument(f'--proxy-server={proxy}')
 
-    print(f"Using Proxy: {proxy}...")
+    # print(f"Using Proxy: {proxy}...")
     
     driver = webdriver.Chrome(options=chrome_options, service=ChromiumService(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()))
     
