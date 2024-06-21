@@ -62,7 +62,7 @@ def login(wallet_addr):
 
     print(f"Using Proxy: {proxy}...")
 
-    driver = webdriver.Chrome(options=chrome_options)
+    driver = webdriver.Chrome(executable_path='./chromedriver', options=chrome_options)
     try:
         driver.get(URL)
     except:
