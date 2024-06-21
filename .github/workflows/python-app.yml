@@ -15,8 +15,13 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.10' # install the python version needed
- #     - name: setup chrome
-  #      uses: browser-actions/setup-chrome@v1
+        
+      - name: Remove Chrome
+        run: sudo apt purge google-chrome-stable
+      - name: Remove default Chromium
+        run: sudo apt purge chromium-browser
+      - name: Install a new Chromium
+        run: sudo apt install -y chromium-browser
 
       - name: install python packages
         run: |
@@ -24,6 +29,8 @@ jobs:
           pip install tonsdk
           pip install selenium
           pip install PyYAML
+          pip install webdriver-manager
+          pip install selenium
 
       - name: execute py script # run main.py
         run: |
