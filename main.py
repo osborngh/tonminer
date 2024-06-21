@@ -57,7 +57,7 @@ def login(wallet_addr):
     proxy = change_proxy()
 
     chrome_options = Options()
-    chrome_options.add_argument('--headless=new')
+    # chrome_options.add_argument('--headless=new')
     chrome_options.add_argument(f'--proxy-server={proxy}')
 
     print(f"Using Proxy: {proxy}...")
