@@ -11,9 +11,11 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.proxy import *
 from selenium.webdriver.chrome.options import Options
-
+from selenium.webdriver.chrome.service import Service as ChromiumService
 from webdriver_manager.chrome import ChromeDriverManager
-from webdriver_manager.utils import ChromeType
+from webdriver_manager.core.os_manager import ChromeType
+
+
 
 import time
 import yaml
@@ -65,8 +67,7 @@ def login(wallet_addr):
 
     print(f"Using Proxy: {proxy}...")
     
-    driver_path = ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()
-    driver = webdriver.Chrome(driver_path, options=chrome_options)
+    driver = webdriver.Chrome(options=chrome_options, service=ChromiumService(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()))
     
     try:
         driver.get(URL)
