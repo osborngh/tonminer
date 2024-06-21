@@ -1,5 +1,4 @@
 # Vinci - June 2024
-# This is gonna make me rich :)
 
 # Basically, we generate new wallet addresses on the TON blockchain.
 # And feed the addresses to a free cloud mining site via scraping.
